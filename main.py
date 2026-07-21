@@ -141,7 +141,8 @@ def receive_message():
         aria_reply = ask_aria(user_text)
         print(f"🤖 ARIA responde: {aria_reply}")
 
-        send_whatsapp_message(from_number, aria_reply)
+        resultado = send_whatsapp_message(from_number, aria_reply)
+        print(f"📤 Respuesta de Meta al envío: {resultado}")
 
     except (KeyError, IndexError) as e:
         print(f"⚠️ Error procesando el payload: {e}")

@@ -120,9 +120,13 @@ def receive_message():
         changes = entry["changes"][0]
         value   = changes["value"]
 
-        if "messages" not in value:
-            return jsonify({"status": "no message"}), 200
+       if "statuses" in value:
+            print(f"📊 Estado de entrega: {value['statuses']}")
+            return jsonify({"status": "status ok"}), 200
 
+        if "messages" not in value:
+            print(f"ℹ️ Payload sin mensajes: {value}")
+            return jsonify({"status": "no message"}), 200
         message     = value["messages"][0]
         from_number = message["from"]
 
